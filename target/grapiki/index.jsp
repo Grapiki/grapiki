@@ -1,5 +1,10 @@
+<!DOCTYPE html>
 <html>
-<body>
-<h2>Hello World!</h2>
-</body>
+	<head>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<h1>ACCUEIL</h1>
+		<p>Ceci est la page d'accueil...</p>
+	</body>
 </html>
