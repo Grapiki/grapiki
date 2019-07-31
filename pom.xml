@@ -2,7 +2,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>udev</groupId>
+	<groupId>com.udev</groupId>
 	<artifactId>grapiki</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
@@ -52,6 +52,12 @@
 		    <version>2.5</version>
 		</dependency>
 		<!-- FIN JERSEY -->
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>8.0.16</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>grapiki</finalName>
@@ -67,6 +73,7 @@
 					<verbose>true</verbose>
 				</configuration>
 			</plugin>
+		
 			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-checkstyle-plugin</artifactId> 
 				<version>3.0.0</version> <executions> <execution> <id>validate</id> <phase>package</phase> 
 				<goals> <goal>check</goal> </goals> <configuration> <encoding>UTF-8</encoding> 
@@ -83,8 +90,6 @@
 				<configuration>
 					<url>http://localhost:8888/manager/text</url>
 					<server>grapiki</server>
-					<!--<username>grapiki</username>
-					<password>grapiki</password>  -->
 					<path>/${project.artifactId}</path>
 					<update>true</update>
 				</configuration>

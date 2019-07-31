@@ -3,14 +3,14 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-	<display-name>com.grapiki.rest</display-name>
+	<display-name>com.udev.grapiki.rest</display-name> <!-- Nom du package où on mettra les .java -->
 	
 	<servlet>
 		<servlet-name>jersey-servlet</servlet-name>
 		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
 		<init-param>
 			<param-name>jersey.config.server.provider.packages</param-name>
-			<param-value>com.grapiki.rest</param-value>
+			<param-value>com.udev.grapiki</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
@@ -25,5 +25,11 @@
 			d'accueil -->
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
+	
+	<resource-ref>
+		<res-ref-name>jdbc/grapiki</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
 
 </web-app>
