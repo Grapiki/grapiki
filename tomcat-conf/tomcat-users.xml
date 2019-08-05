@@ -46,5 +46,4 @@
 <role rolename="manager-script"/>
 <role rolename="admin-gui"/>
 <user username="grapiki" password="grapiki" roles="tomcat,manager-gui,admin-gui,manager-script"/>
-<user username="grapi" password="grapi" roles="manager-script"/>
 </tomcat-users>
