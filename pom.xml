@@ -90,8 +90,8 @@
 				<configuration>
 					<url>http://localhost:8888/manager/text</url>
 					<server>grapiki</server>
-					<username>grapi</username>
-					<password>grapi</password>
+					<username>grapiki</username>
+					<password>grapiki</password>
 					<path>/${project.artifactId}</path>
 					<update>true</update>
 				</configuration>
