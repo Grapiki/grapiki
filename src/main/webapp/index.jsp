@@ -6,6 +6,6 @@
 	<body>
 		<h1>ACCUEIL</h1>
 		<p>Ceci est la page d'accueil... hehe</p>
-		<p>Jenkins 2 !</p>
+		<p>Jenkins DOCKER YOUHOUU !</p>
 	</body>
 </html>
