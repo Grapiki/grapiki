@@ -1,4 +1,4 @@
-package com.udev.grapiki.rest;
+package com.udev.grapiki.model;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -8,8 +8,8 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import com.udev.grapiki.dao.MyDataSource;
 
-@Path("/status")
-public class StatusV1 {
+@Path("/status2")
+public class StatusV2 {
 
 	@GET
 	@Produces(MediaType.TEXT_HTML)
