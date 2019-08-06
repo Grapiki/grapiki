@@ -44,7 +44,7 @@ public class StatusV1 {
 		UserDao uDao = new UserDao();
 		String users = "";
 		for(User user : uDao.getUsers()) {
-			users += user.toString()+", ";
+			users += user.getAlias()+", ";
 		}
 		return users;
 	}
