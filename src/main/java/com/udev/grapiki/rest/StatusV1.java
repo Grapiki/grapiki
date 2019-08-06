@@ -27,9 +27,9 @@ public class StatusV1 {
 	try(Connection connection = MyDataSource.getSingleton().getConnection();
 		Statement stmt = connection.createStatement()){
 		String alias = "";
-		try(ResultSet rs = stmt.executeQuery("select alias from user")){
+		try(ResultSet rs = stmt.executeQuery("select password from user")){
 			while(rs.next()) {
-				alias += rs.getString("alias");
+				alias += rs.getString("password");
 			}
 		}
 		return alias;
