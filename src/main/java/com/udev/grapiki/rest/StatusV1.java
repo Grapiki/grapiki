@@ -7,6 +7,7 @@ import java.sql.Statement;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import com.udev.grapiki.dao.MyDataSource;
+import com.udev.grapiki.dao.UserDao;
 
 @Path("/status")
 public class StatusV1 {
@@ -33,5 +34,13 @@ public class StatusV1 {
 		}catch(SQLException e) {
 			throw new RuntimeException(e);
 		}
+	}
+	
+	@Path("/users")
+	@GET
+	@Produces(MediaType.TEXT_HTML)
+	public String getAllUsers() {
+		UserDao uDao = new UserDao();
+		return uDao.getUsers().toString();
 	}
 }
