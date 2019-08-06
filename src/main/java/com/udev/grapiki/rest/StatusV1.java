@@ -8,6 +8,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import com.udev.grapiki.dao.MyDataSource;
 import com.udev.grapiki.dao.UserDao;
+import com.udev.grapiki.model.User;
 
 @Path("/status")
 public class StatusV1 {
@@ -41,6 +42,10 @@ public class StatusV1 {
 	@Produces(MediaType.TEXT_HTML)
 	public String getAllUsers() {
 		UserDao uDao = new UserDao();
-		return uDao.getUsers().toString();
+		String users = "";
+		for(User user : uDao.getUsers()) {
+			users += user.toString()+", ";
+		}
+		return users;
 	}
 }
