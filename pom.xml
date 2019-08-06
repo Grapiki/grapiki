@@ -83,7 +83,8 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.3</version>
 			</plugin>
-			<plugin>
+			<!-- Commenté car je déploie avec le plugin Maven présent sur Jenkins
+			 <plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.2</version>
@@ -93,7 +94,7 @@
 					<path>/${project.artifactId}</path>
 					<update>true</update>
 				</configuration>
-			</plugin>
+			</plugin>-->
 		</plugins>
 	</build>
 </project>
