@@ -157,7 +157,7 @@
 		  name="jdbc/grapiki" 
 		  password="root" 
 		  type="javax.sql.DataSource" 
-		  url="jdbc:mysql://localhost:3307/grapiki?serverTimezone=GMT" 
+		  url="jdbc:mysql://172.17.0.2:3306/grapiki?serverTimezone=GMT" 
 		  username="root"/>
       </Host>
     </Engine>
