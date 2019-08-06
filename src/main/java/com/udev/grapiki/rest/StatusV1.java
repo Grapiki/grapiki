@@ -19,7 +19,7 @@ public class StatusV1 {
 		return "<p>Java Web Service</p>";
 	}
 	
-	/*@Path("/database")
+	@Path("/database")
 	@GET
 	@Produces(MediaType.TEXT_HTML)
 	public String getAllAlias() {
@@ -35,7 +35,7 @@ public class StatusV1 {
 		}catch(SQLException e) {
 			throw new RuntimeException(e);
 		}
-	}*/
+	}
 	/*public String returnDatabaseStatus() throws Exception{
 		PreparedStatement query;
 		String myString = "";
