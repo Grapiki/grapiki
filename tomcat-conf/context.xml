@@ -33,7 +33,7 @@
 	maxWaitMillis="10000" />
 </Context>  -->
 
-<Context privileged="true">
+<Context>
   <Resource name="jdbc/grapiki"
   			defaultAutoCommit="false"
             auth="Container"
@@ -43,6 +43,6 @@
             maxWaitMillis="10000"
             username="root"
             password="root"
-            driverClassName="com.mysql.jdbc.Driver"
-            url="jdbc:mysql://localhost:3307/grapiki?serverTimezone=GMT" />
+            driverClassName="com.mysql.cj.jdbc.Driver"
+            url="jdbc:mysql://172.17.0.2:3306/grapiki?serverTimezone=GMT" />
 </Context>
