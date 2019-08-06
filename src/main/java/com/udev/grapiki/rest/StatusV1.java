@@ -10,7 +10,7 @@ import javax.ws.rs.core.MediaType;
 
 import com.udev.grapiki.dao.MyDataSource;
 
-@Path("/1/status")
+@Path("/status")
 public class StatusV1 {
 
 	@GET
@@ -19,7 +19,7 @@ public class StatusV1 {
 		return "<p>Java Web Service</p>";
 	}
 	
-	@Path("/database")
+	/*@Path("/database")
 	@GET
 	@Produces(MediaType.TEXT_HTML)
 	public String getAllAlias() {
@@ -35,7 +35,7 @@ public class StatusV1 {
 		}catch(SQLException e) {
 			throw new RuntimeException(e);
 		}
-	}
+	}*/
 	/*public String returnDatabaseStatus() throws Exception{
 		PreparedStatement query;
 		String myString = "";
