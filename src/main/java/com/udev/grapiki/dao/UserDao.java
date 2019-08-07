@@ -31,8 +31,8 @@ public class UserDao {
 		try(Connection connection = MyDataSource.getSingleton().getConnection();
 				Statement stmt = connection.createStatement()){
 			User u = new User();
-				try(ResultSet rs = stmt.executeQuery("select alias, birthday, email, password, picture, registration_date, newsletter_subscription, deleted_account from user where id ="+id)){
-					while(rs.next()) {
+				try(ResultSet rs = stmt.executeQuery("select * from user where id ="+id)){
+					if(rs.next()) {
 						u.setId(id);
 						u.setAlias(rs.getString("alias"));
 						u.setBirthday(rs.getString("birthday"));
@@ -54,8 +54,8 @@ public class UserDao {
 		try(Connection connection = MyDataSource.getSingleton().getConnection();
 				Statement stmt = connection.createStatement()){
 			User u = new User();
-				try(ResultSet rs = stmt.executeQuery("select id, alias, birthday, password, picture, registration_date, newsletter_subscription, deleted_account from user where email ="+email)){
-					while(rs.next()) {
+				try(ResultSet rs = stmt.executeQuery("select * from user where email =\""+email+"\"")){
+					if(rs.next()) {
 						u.setId(rs.getInt("id"));
 						u.setAlias(rs.getString("alias"));
 						u.setBirthday(rs.getString("birthday"));
@@ -71,6 +71,11 @@ public class UserDao {
 			}catch(SQLException e) {
 				throw new RuntimeException(e);
 			}
+	}
+	
+	private User createUser() {
+		User u = new User();
+		return u;
 	}
 	
 }
