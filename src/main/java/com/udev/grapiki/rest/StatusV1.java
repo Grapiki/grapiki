@@ -57,7 +57,7 @@ public class StatusV1 {
 		return uDao.getUser(id);
 	}
 	
-	@Path("/user/{email}")
+	@Path("/user/email/{email}")
 	@GET
 	@Produces(MediaType.TEXT_HTML)
 	public User get(@PathParam("email") String email) {
