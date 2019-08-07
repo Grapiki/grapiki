@@ -26,4 +26,51 @@ public class UserDao {
 				throw new RuntimeException(e);
 			}
 	}
+	
+	public User getUser(int id) {
+		try(Connection connection = MyDataSource.getSingleton().getConnection();
+				Statement stmt = connection.createStatement()){
+			User u = new User();
+				try(ResultSet rs = stmt.executeQuery("select alias, birthday, email, password, picture, registration_date, newsletter_subscription, deleted_account from user where id ="+id)){
+					while(rs.next()) {
+						u.setId(id);
+						u.setAlias(rs.getString("alias"));
+						u.setBirthday(rs.getString("birthday"));
+						u.setEmail(rs.getString("email"));
+						u.setPassword(rs.getString("password"));
+						u.setPicture(rs.getString("picture"));
+						u.setRegistrationDate(rs.getString("registration_date"));
+						u.setSubscribedToNewsletter(rs.getBoolean("newsletter_subscription"));
+						u.setDeletedAccount(rs.getBoolean("deleted_account"));
+					}
+				}
+				return u;
+			}catch(SQLException e) {
+				throw new RuntimeException(e);
+			}
+	}
+	
+	public User getUser(String email) {
+		try(Connection connection = MyDataSource.getSingleton().getConnection();
+				Statement stmt = connection.createStatement()){
+			User u = new User();
+				try(ResultSet rs = stmt.executeQuery("select id, alias, birthday, password, picture, registration_date, newsletter_subscription, deleted_account from user where email ="+email)){
+					while(rs.next()) {
+						u.setId(rs.getInt("id"));
+						u.setAlias(rs.getString("alias"));
+						u.setBirthday(rs.getString("birthday"));
+						u.setEmail(email);
+						u.setPassword(rs.getString("password"));
+						u.setPicture(rs.getString("picture"));
+						u.setRegistrationDate(rs.getString("registration_date"));
+						u.setSubscribedToNewsletter(rs.getBoolean("newsletter_subscription"));
+						u.setDeletedAccount(rs.getBoolean("deleted_account"));
+					}
+				}
+				return u;
+			}catch(SQLException e) {
+				throw new RuntimeException(e);
+			}
+	}
+	
 }

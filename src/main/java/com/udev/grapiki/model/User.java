@@ -12,6 +12,10 @@ public class User {
 	private boolean isSubscribedToNewsletter;
 	private boolean isDeletedAccount;
 	
+	public User() {
+		
+	}
+	
 	public User(int id, String alias, String birthday, String email, String password, String picture, String registrationDate, boolean isSubscribedToNewsletter, boolean isDeletedAccount) {
 		this.setId(id);
 		this.setAlias(alias);
