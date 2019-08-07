@@ -52,24 +52,16 @@ public class StatusV1 {
 	@Path("/user/{id}")
 	@GET
 	@Produces(MediaType.TEXT_HTML)
-	public String get(@PathParam("id") int id) {
+	public User get(@PathParam("id") int id) {
 		UserDao uDao = new UserDao();
-		String users = "";
-		for(User user : uDao.getUsers()) {
-			users += user.getAlias()+", ";
-		}
-		return users;
+		return uDao.getUser(id);
 	}
 	
 	@Path("/user/{email}")
 	@GET
 	@Produces(MediaType.TEXT_HTML)
-	public String get(@PathParam("email") String email) {
+	public User get(@PathParam("email") String email) {
 		UserDao uDao = new UserDao();
-		String users = "";
-		for(User user : uDao.getUsers()) {
-			users += user.getAlias()+", ";
-		}
-		return users;
+		return uDao.getUser(email);
 	}
 }
