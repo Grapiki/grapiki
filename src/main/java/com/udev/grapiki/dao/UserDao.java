@@ -36,7 +36,8 @@ public class UserDao {
 						User u = new User(id, rs.getString("alias"), rs.getString("email"), rs.getString("birthday"), rs.getString("password"), rs.getString("picture"), rs.getString("registration_date"), rs.getBoolean("newsletter_subscription"), rs.getBoolean("deleted_account"));
 						return Optional.of(u);
 					}else {
-					return Optional.empty();
+						return Optional.empty();
+					}
 				}
 			}catch(SQLException e) {
 				throw new RuntimeException(e);
