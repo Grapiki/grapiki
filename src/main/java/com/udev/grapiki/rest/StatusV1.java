@@ -57,7 +57,7 @@ public class StatusV1 {
 	
 	@Path("/user/{id}")
 	@GET
-	@Produces(MediaType.TEXT_HTML)
+	@Produces({ "application/json", "application/xml" })
 	public User get(@PathParam("id") int id) {
 		UserDao uDao = new UserDao();
 		return uDao.getUser(id);
@@ -65,7 +65,7 @@ public class StatusV1 {
 	
 	@Path("/user/email/{email}")
 	@GET
-	@Produces(MediaType.TEXT_HTML)
+	@Produces({ "application/json", "application/xml" })
 	public Optional<User> get(@PathParam("email") String email) {
 		Optional<User> u = null;
 		try {
