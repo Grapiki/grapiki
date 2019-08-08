@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import com.udev.grapiki.model.User;
 
@@ -50,7 +51,7 @@ public class UserDao {
 			}
 	}
 	
-	public User getUser(String email) {
+	public Optional<User> getUser(String email) {
 		try(Connection connection = MyDataSource.getSingleton().getConnection();
 				Statement stmt = connection.createStatement()){
 			User u = new User();
@@ -65,9 +66,11 @@ public class UserDao {
 						u.setRegistrationDate(rs.getString("registration_date"));
 						u.setSubscribedToNewsletter(rs.getBoolean("newsletter_subscription"));
 						u.setDeletedAccount(rs.getBoolean("deleted_account"));
+						return Optional.of(u);
+					}else {
+						return Optional.empty();
 					}
 				}
-				return u;
 			}catch(SQLException e) {
 				throw new RuntimeException(e);
 			}

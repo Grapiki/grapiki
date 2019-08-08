@@ -4,14 +4,20 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Optional;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import com.udev.grapiki.dao.MyDataSource;
 import com.udev.grapiki.dao.UserDao;
 import com.udev.grapiki.model.User;
+import com.udev.grapiki.model.services.UserService;
+import com.udev.grapiki.model.exceptions.NotFoundException;
 
 @Path("/status")
 public class StatusV1 {
+	
+	private UserService uServ = new UserService();
 
 	@GET
 	@Produces(MediaType.TEXT_HTML)
@@ -60,8 +66,13 @@ public class StatusV1 {
 	@Path("/user/email/{email}")
 	@GET
 	@Produces(MediaType.TEXT_HTML)
-	public User get(@PathParam("email") String email) {
-		UserDao uDao = new UserDao();
-		return uDao.getUser(email);
+	public Optional<User> get(@PathParam("email") String email) {
+		Optional<User> u = null;
+		try {
+			u = uServ.getUser(email);
+		}catch(NotFoundException nfe) {
+			nfe.printStackTrace();
+		}
+		return u;
 	}
 }
