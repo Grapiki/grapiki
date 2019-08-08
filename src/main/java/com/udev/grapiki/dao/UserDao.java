@@ -28,24 +28,16 @@ public class UserDao {
 			}
 	}
 	
-	public User getUser(int id) {
+	public Optional<User> getUser(int id) {
 		try(Connection connection = MyDataSource.getSingleton().getConnection();
 				Statement stmt = connection.createStatement()){
-			User u = new User();
 				try(ResultSet rs = stmt.executeQuery("select * from user where id ="+id)){
 					if(rs.next()) {
-						u.setId(id);
-						u.setAlias(rs.getString("alias"));
-						u.setBirthday(rs.getString("birthday"));
-						u.setEmail(rs.getString("email"));
-						u.setPassword(rs.getString("password"));
-						u.setPicture(rs.getString("picture"));
-						u.setRegistrationDate(rs.getString("registration_date"));
-						u.setSubscribedToNewsletter(rs.getBoolean("newsletter_subscription"));
-						u.setDeletedAccount(rs.getBoolean("deleted_account"));
-					}
+						User u = new User(id, rs.getString("alias"), rs.getString("email"), rs.getString("birthday"), rs.getString("password"), rs.getString("picture"), rs.getString("registration_date"), rs.getBoolean("newsletter_subscription"), rs.getBoolean("deleted_account"));
+						return Optional.of(u);
+					}else {
+					return Optional.empty();
 				}
-				return u;
 			}catch(SQLException e) {
 				throw new RuntimeException(e);
 			}
@@ -54,18 +46,9 @@ public class UserDao {
 	public Optional<User> getUser(String email) {
 		try(Connection connection = MyDataSource.getSingleton().getConnection();
 				Statement stmt = connection.createStatement()){
-			User u = new User();
 				try(ResultSet rs = stmt.executeQuery("select * from user where email =\""+email+"\"")){
 					if(rs.next()) {
-						u.setId(rs.getInt("id"));
-						u.setAlias(rs.getString("alias"));
-						u.setBirthday(rs.getString("birthday"));
-						u.setEmail(email);
-						u.setPassword(rs.getString("password"));
-						u.setPicture(rs.getString("picture"));
-						u.setRegistrationDate(rs.getString("registration_date"));
-						u.setSubscribedToNewsletter(rs.getBoolean("newsletter_subscription"));
-						u.setDeletedAccount(rs.getBoolean("deleted_account"));
+						User u = new User(rs.getInt("id"), rs.getString("alias"), email, rs.getString("birthday"), rs.getString("password"), rs.getString("picture"), rs.getString("registration_date"), rs.getBoolean("newsletter_subscription"), rs.getBoolean("deleted_account"));
 						return Optional.of(u);
 					}else {
 						return Optional.empty();
@@ -75,10 +58,4 @@ public class UserDao {
 				throw new RuntimeException(e);
 			}
 	}
-	
-	private User createUser() {
-		User u = new User();
-		return u;
-	}
-	
 }

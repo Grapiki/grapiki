@@ -59,17 +59,22 @@ public class StatusV1 {
 	@GET
 	@Produces({ "application/json", "application/xml" })
 	public User get(@PathParam("id") int id) {
-		UserDao uDao = new UserDao();
-		return uDao.getUser(id);
+		User u = null;
+		try {
+			u = uServ.getUser(id).get();
+		}catch(NotFoundException nfe) {
+			nfe.printStackTrace();
+		}
+		return u;
 	}
 	
 	@Path("/user/email/{email}")
 	@GET
 	@Produces({ "application/json", "application/xml" })
-	public Optional<User> get(@PathParam("email") String email) {
-		Optional<User> u = null;
+	public User get(@PathParam("email") String email) {
+		User u = null;
 		try {
-			u = uServ.getUser(email);
+			u = uServ.getUser(email).get();
 		}catch(NotFoundException nfe) {
 			nfe.printStackTrace();
 		}
