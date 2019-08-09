@@ -20,14 +20,9 @@ public class RestApi {
 	private UserService uServ = new UserService();
 
 	@GET
-	@Produces(MediaType.TEXT_HTML)
-	public String getAllUsers() {
-		UserDao uDao = new UserDao();
-		String users = "";
-		for(User user : uDao.getUsers()) {
-			users += user.getAlias()+", ";
-		}
-		return users;
+	@Produces({ "application/json", "application/xml" })
+	public List<User> getAllUsers() {
+		return uServ.getUsers();
 	}
 	
 	@Path("/user/{id}")
