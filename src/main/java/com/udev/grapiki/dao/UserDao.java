@@ -33,7 +33,7 @@ public class UserDao {
 				Statement stmt = connection.createStatement()){
 				try(ResultSet rs = stmt.executeQuery("select * from user where id ="+id)){
 					if(rs.next()) {
-						User u = new User(id, rs.getString("alias"), rs.getString("email"), rs.getString("birthday"), rs.getString("password"), rs.getString("picture"), rs.getString("registration_date"), rs.getBoolean("newsletter_subscription"), rs.getBoolean("deleted_account"));
+						User u = new User(id, rs.getString("alias"), rs.getString("birthday"), rs.getString("email"), rs.getString("password"), rs.getString("picture"), rs.getString("registration_date"), rs.getBoolean("newsletter_subscription"), rs.getBoolean("deleted_account"));
 						return Optional.of(u);
 					}else {
 						return Optional.empty();
@@ -49,7 +49,7 @@ public class UserDao {
 				Statement stmt = connection.createStatement()){
 				try(ResultSet rs = stmt.executeQuery("select * from user where email =\""+email+"\"")){
 					if(rs.next()) {
-						User u = new User(rs.getInt("id"), rs.getString("alias"), email, rs.getString("birthday"), rs.getString("password"), rs.getString("picture"), rs.getString("registration_date"), rs.getBoolean("newsletter_subscription"), rs.getBoolean("deleted_account"));
+						User u = new User(rs.getInt("id"), rs.getString("alias"), rs.getString("birthday"), email, rs.getString("password"), rs.getString("picture"), rs.getString("registration_date"), rs.getBoolean("newsletter_subscription"), rs.getBoolean("deleted_account"));
 						return Optional.of(u);
 					}else {
 						return Optional.empty();

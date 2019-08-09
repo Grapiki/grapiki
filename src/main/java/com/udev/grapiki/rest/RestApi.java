@@ -14,36 +14,11 @@ import com.udev.grapiki.model.User;
 import com.udev.grapiki.model.services.UserService;
 import com.udev.grapiki.model.exceptions.NotFoundException;
 
-@Path("/status")
-public class StatusV1 {
+@Path("/users")
+public class RestApi {
 	
 	private UserService uServ = new UserService();
 
-	@GET
-	@Produces(MediaType.TEXT_HTML)
-	public String returnTitle() {
-		return "<p>Java Web Service</p>";
-	}
-	
-	@Path("/database")
-	@GET
-	@Produces(MediaType.TEXT_HTML)
-	public String getAllAlias() {
-		try(Connection connection = MyDataSource.getSingleton().getConnection();
-			Statement stmt = connection.createStatement()){
-			String alias = "";
-			try(ResultSet rs = stmt.executeQuery("select alias from user")){
-				while(rs.next()) {
-					alias += rs.getString("alias");
-				}
-			}
-			return alias;
-		}catch(SQLException e) {
-			throw new RuntimeException(e);
-		}
-	}
-	
-	@Path("/users")
 	@GET
 	@Produces(MediaType.TEXT_HTML)
 	public String getAllUsers() {
