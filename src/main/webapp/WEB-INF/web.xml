@@ -5,15 +5,7 @@
 <web-app>
 	<display-name>com.udev.grapiki.rest</display-name> <!-- Nom du package où on mettra les .java -->
 	
-	<filter>
-		<filter-name>CORS</filter-name>
-		<filter-class>com.thetransactioncompany.cors.autoreconf.AutoReconfigurableCORSFilter</filter-class>
-	</filter>
 	
-	<filter-mapping>
-        <filter-name>CORS</filter-name>
-        <url-pattern>/*</url-pattern>
-	</filter-mapping>
 	
 	<servlet>
 		<servlet-name>jersey-servlet</servlet-name>
