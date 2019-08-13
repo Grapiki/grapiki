@@ -39,7 +39,7 @@ public class RestApi {
 		return u;
 	}
 	
-	@Path("/{email}")
+	@Path("/email/{email}")
 	@GET
 	@Produces({ "application/json", "application/xml" })
 	public User get(@PathParam("email") String email) {
