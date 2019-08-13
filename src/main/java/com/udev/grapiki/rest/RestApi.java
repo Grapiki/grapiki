@@ -26,7 +26,7 @@ public class RestApi {
 		return uServ.getUsers();
 	}
 	
-	@Path("/user/{id}")
+	@Path("/{id}")
 	@GET
 	@Produces({ "application/json", "application/xml" })
 	public User get(@PathParam("id") int id) {
@@ -39,7 +39,7 @@ public class RestApi {
 		return u;
 	}
 	
-	@Path("/user/email/{email}")
+	@Path("/{email}")
 	@GET
 	@Produces({ "application/json", "application/xml" })
 	public User get(@PathParam("email") String email) {
