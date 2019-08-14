@@ -19,7 +19,7 @@ public class UserService {
 		if(u.isPresent()) {
 			return u;
 		}else {
-			throw new NotFoundException("Cet utilisateur n'existe pas en base.");
+			throw new NotFoundException();
 		}
 	}
 	
