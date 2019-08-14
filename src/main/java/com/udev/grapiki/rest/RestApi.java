@@ -29,26 +29,18 @@ public class RestApi {
 	@Path("/{id}")
 	@GET
 	@Produces({ "application/json", "application/xml" })
-	public User get(@PathParam("id") int id) {
+	public User get(@PathParam("id") int id) throws NotFoundException{
 		User u = null;
-		try {
-			u = uServ.getUser(id).get();
-		}catch(NotFoundException nfe) {
-			nfe.printStackTrace();
-		}
+		u = uServ.getUser(id).get();
 		return u;
 	}
 	
 	@Path("/email/{email}")
 	@GET
 	@Produces({ "application/json", "application/xml" })
-	public User get(@PathParam("email") String email) {
+	public User get(@PathParam("email") String email)  throws NotFoundException{
 		User u = null;
-		try {
-			u = uServ.getUser(email).get();
-		}catch(NotFoundException nfe) {
-			nfe.printStackTrace();
-		}
+		u = uServ.getUser(email).get();
 		return u;
 	}
 }
