@@ -1,2 +1,7 @@
 com\udev\grapiki\dao\MyDataSource.class
-com\udev\grapiki\rest\StatusV1.class
+com\udev\grapiki\rest\RestApi.class
+com\udev\grapiki\dao\UserDao.class
+com\udev\grapiki\web\exceptions_mapping\NotFoundExceptionMapper.class
+com\udev\grapiki\model\User.class
+com\udev\grapiki\model\exceptions\NotFoundException.class
+com\udev\grapiki\model\services\UserService.class

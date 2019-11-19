@@ -5,6 +5,6 @@
 	</head>
 	<body>
 		<h1>ACCUEIL</h1>
-		<p>Quelle épopée...<p>
+		<p>Quelle épopée... !!<p>
 	</body>
 </html>
